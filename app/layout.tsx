@@ -4,13 +4,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <title>Splitwisely</title>
-      </head>
-      <body>
-        {children}
-      </body>
+    <html>
+      <head />
+      <body>{children}</body>
     </html>
   )
 }
