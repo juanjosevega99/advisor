@@ -44,30 +44,31 @@ export default function Home() {
             top: "50%",
             transform: "translate(-50%, -50%)",
             textAlign: "center",
-            fontFamily: "Montserrat, sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
           }}
         >
           <h1
             style={{
               fontSize: "2rem",
-              fontStyle: "italic",
+              // fontStyle: "italic",
               marginBottom: "1rem",
+              fontFamily: "'Crimson Text', serif",
             }}
           >
             {quote}
           </h1>
-          <h3
+          <p
             style={{
-              fontSize: "1.5rem",
+              fontSize: "1.4rem",
               fontStyle: "italic",
-              fontFamily: "Dancing Script, cursive",
+              fontFamily: "'Montserrat', sans-serif",
             }}
           >
             {author}
-          </h3>
+          </p>
           <button
             style={{
-              backgroundColor: '#00152C',
+              backgroundColor: '#1C2A44',
               color: "white",
               border: "none",
               borderRadius: "10px",
@@ -76,6 +77,7 @@ export default function Home() {
               fontWeight: "bold",
               cursor: "pointer",
               transition: "background-color 0.3s ease",
+              marginTop: "2.5rem",
             }}
             onClick={() => {
               const randomQuote = getRandomQuote(data);
