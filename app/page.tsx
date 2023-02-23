@@ -1,22 +1,33 @@
-import data from "./mocks/quotes.json";
-import '../styles/globals.css'
+import { useEffect, useState } from "react";
+import "../styles/globals.css";
 
-interface QuoteList {
-  Quotes: {
-    id: number;
-    quote: string;
-    author: string;
-  }[];
+interface Quote {
+  id: number;
+  quote: string;
+  author: string;
 }
 
-function getRandomQuote(quotes: QuoteList) {
-  const randomIndex = Math.floor(Math.random() * quotes.Quotes.length);
-  const randomQuote = quotes.Quotes[randomIndex];
+function getRandomQuote(quotes: Quote[]) {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const randomQuote = quotes[randomIndex];
   return randomQuote;
 }
 
 export default function Home() {
-  const { quote, author } = getRandomQuote(data);
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const timestamp = Date.now();
+      const response = await fetch(`/mocks/quotes.json?timestamp=${timestamp}`);
+      const data = await response.json();
+      const randomQuote = getRandomQuote(data.quotes);
+      setQuote(randomQuote.quote);
+      setAuthor(randomQuote.author);
+    };
+    fetchData();
+  }, []);
 
   return (
     <main
