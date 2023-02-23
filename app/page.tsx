@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
+import data from "./mocks/quotes.json";
 import "../styles/globals.css";
 
-interface Quote {
-  id: number;
-  quote: string;
-  author: string;
+interface QuoteList {
+  Quotes: {
+    id: number;
+    quote: string;
+    author: string;
+  }[];
 }
 
-function getRandomQuote(quotes: Quote[]) {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const randomQuote = quotes[randomIndex];
+function getRandomQuote(quotes: QuoteList) {
+  const randomIndex = Math.floor(Math.random() * quotes.Quotes.length);
+  const randomQuote = quotes.Quotes[randomIndex];
   return randomQuote;
 }
 
@@ -18,42 +23,70 @@ export default function Home() {
   const [author, setAuthor] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
-      const timestamp = Date.now();
-      const response = await fetch(`/mocks/quotes.json?timestamp=${timestamp}`);
-      const data = await response.json();
-      const randomQuote = getRandomQuote(data.quotes);
-      setQuote(randomQuote.quote);
-      setAuthor(randomQuote.author);
-    };
-    fetchData();
+    const randomQuote = getRandomQuote(data);
+    setQuote(randomQuote.quote);
+    setAuthor(randomQuote.author);
   }, []);
 
+  const handleClick = () => {
+    const randomQuote = getRandomQuote(data);
+    setQuote(randomQuote.quote);
+    setAuthor(randomQuote.author);
+  };
+
   return (
-    <main
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-        textAlign: "center",
-        fontFamily: "Montserrat, sans-serif",
-      }}
-    >
-      <h1
-        style={{ fontSize: "2rem", fontStyle: "italic", marginBottom: "1rem" }}
-      >
-        {quote}
-      </h1>
-      <h3
-        style={{
-          fontSize: "1.5rem",
-          fontStyle: "italic",
-          fontFamily: "Dancing Script, cursive",
-        }}
-      >
-        {author}
-      </h3>
-    </main>
+    <>
+      {quote && author && (
+        <main
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+            fontFamily: "Montserrat, sans-serif",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "2rem",
+              fontStyle: "italic",
+              marginBottom: "1rem",
+            }}
+          >
+            {quote}
+          </h1>
+          <h3
+            style={{
+              fontSize: "1.5rem",
+              fontStyle: "italic",
+              fontFamily: "Dancing Script, cursive",
+            }}
+          >
+            {author}
+          </h3>
+          <button
+            style={{
+              backgroundColor: '#00152C',
+              color: "white",
+              border: "none",
+              borderRadius: "10px",
+              padding: "10px 20px",
+              fontSize: "1.0rem",
+              fontWeight: "bold",
+              cursor: "pointer",
+              transition: "background-color 0.3s ease",
+            }}
+            onClick={() => {
+              const randomQuote = getRandomQuote(data);
+              setQuote(randomQuote.quote);
+              setAuthor(randomQuote.author);
+            }}
+          >
+            Change Quote
+          </button>
+        </main>
+      )}
+    </>
   );
 }
