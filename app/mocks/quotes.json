@@ -1,0 +1,29 @@
+{
+  "Quotes": [
+    {
+      "id": 1,
+      "quote": "Nunca te rindas hasta agotar todos los medios que tienes. Y cuando los agotes, cierra los ojos e intenta lo que no crees poder hacer. Siempre.",
+      "author": "Freddy Vega"
+    },
+    {
+      "id": 2,
+      "quote": "Acuérdate de esos momentos en los que soñabas con lo que tienes hoy.",
+      "author": "Anonym"
+    },
+    {
+      "id": 3,
+      "quote": "Si piensas demasiado una decisión, la respuesta debería ser 'no'.",
+      "author": "Alberto, themacrowizard"
+    },
+    {
+      "id": 4,
+      "quote": "If you know what you want, why are you waiting?",
+      "author": "Simon Sarris"
+    },
+    {
+      "id": 5,
+      "quote": "Todos los grandes desarrolladores llegaron ahí resolviendo problemas que no estaban calificados para resolver, hasta que en realidad lo hicieron.",
+      "author": "Patrick McKenzi"
+    }
+  ]
+}
