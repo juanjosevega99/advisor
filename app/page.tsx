@@ -28,12 +28,6 @@ export default function Home() {
     setAuthor(randomQuote.author);
   }, []);
 
-  const handleClick = () => {
-    const randomQuote = getRandomQuote(data);
-    setQuote(randomQuote.quote);
-    setAuthor(randomQuote.author);
-  };
-
   return (
     <>
       {quote && author && (
