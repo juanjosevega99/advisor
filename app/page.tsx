@@ -3,14 +3,7 @@
 import { useState, useEffect } from "react";
 import data from "./mocks/quotes.json";
 import styles from "./styles.module.css";
-
-interface QuoteList {
-  Quotes: {
-    id: number;
-    quote: string;
-    author: string;
-  }[];
-}
+import { QuoteList } from "../shared/quotesInterface";
 
 function getRandomQuote(quotes: QuoteList) {
   const randomIndex = Math.floor(Math.random() * quotes.Quotes.length);
