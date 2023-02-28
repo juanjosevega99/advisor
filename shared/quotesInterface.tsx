@@ -1,7 +1,5 @@
-export interface QuoteList {
-  Quotes: {
-    id: number;
-    quote: string;
-    author: string;
-  }[];
+export interface Quote {
+  id: string;
+  quote: string;
+  author: string;
 }
