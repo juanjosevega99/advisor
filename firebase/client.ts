@@ -5,7 +5,7 @@ import {
   getDocs,
   addDoc,
 } from "firebase/firestore/lite";
-import { Quote } from "../shared/quotesInterface";
+import { newQuote, Quote } from "../shared/quotesInterface";
 
 const firebaseConfig =
   process.env.NEXT_PUBLIC_FIREBASE_CONFIG &&
@@ -33,4 +33,9 @@ export async function getQuotes() {
     };
   });
   return quotes;
+}
+
+export async function addQuote(newQuote: newQuote) {
+  const quotesCol = collection(db, "quotes");
+  await addDoc(quotesCol, newQuote);
 }
