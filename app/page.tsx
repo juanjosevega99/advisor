@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
-import { Quotes } from "../shared/quotesInterface";
+import { Quote } from "../shared/quotesInterface";
 import { getQuotes } from "../firebase/client";
 
-function getRandomQuote(quotes) {
+function getRandomQuote(quotes: Quote[]) {
   const randomIndex = Math.floor(Math.random() * quotes.length);
   const randomQuote = quotes[randomIndex];
   return randomQuote;
