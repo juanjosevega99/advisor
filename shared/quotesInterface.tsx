@@ -3,3 +3,12 @@ export interface Quote {
   quote: string;
   author: string;
 }
+
+export interface newQuote {
+  quote: string;
+  author: string;
+}
+
+export interface Quotes {
+  id: string;
+}[]
