@@ -1,12 +1,20 @@
-import { QuoteList } from "../../shared/quotesInterface";
+"use client";
+
+import { useState, useEffect } from "react";
+import { getQuotes } from "../../firebase/client";
+import { Quote } from "../../shared/quotesInterface";
 import styles from "./styles.module.css";
 
-interface Props {
-  data: QuoteList;
-}
+export function QuoteLayout() {
+  const [quotes, setQuotes] = useState<Quote[]>([]);
 
-export function QuoteLayout({ data }: Props) {
-  const quotes = data.Quotes;
+  useEffect(() => {
+    const fetchQuotes = async () => {
+      const quotes = await getQuotes();
+      setQuotes(quotes);
+    };
+    fetchQuotes();
+  }, []);
 
   return (
     <div className={styles.container}>
