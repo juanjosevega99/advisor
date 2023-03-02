@@ -40,3 +40,28 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+@media only screen and (max-device-width: 430px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .input,
+  .inputAuthor {
+    width: 70%;
+    padding: 10px;
+    margin-top: 8px;
+  }
+  
+  .button {
+    width: 70%;
+    margin-top: 8px;
+    padding: 10px;
+    background-color: #334f82;
+    color: white;
+    border-radius: 10px;
+  }
+}
