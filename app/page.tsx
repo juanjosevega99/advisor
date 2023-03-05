@@ -1,29 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
-import { Quote } from "../shared/quotesInterface";
-import { getQuotes } from "../firebase/client";
-
-function getRandomQuote(quotes: Quote[]) {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const randomQuote = quotes[randomIndex];
-  return randomQuote;
-}
+import { useQuotes } from "../hooks/useQuotes";
 
 export default function Home() {
-  const [quote, setQuote] = useState("");
-  const [author, setAuthor] = useState("");
-
-  useEffect(() => {
-    const fetchQuotes = async () => {
-      const quotes = await getQuotes();
-      const randomQuote = getRandomQuote(quotes);
-      setQuote(randomQuote.quote);
-      setAuthor(randomQuote.author);
-    };
-    fetchQuotes();
-  }, []);
+  const { quote, author, fetchQuotes } = useQuotes();
 
   return (
     <>
@@ -31,15 +12,7 @@ export default function Home() {
         <main className={styles.main}>
           <h1 className={styles.title}>{quote}</h1>
           <p className={styles.p}>{author}</p>
-          <button
-            className={styles.button}
-            onClick={async () => {
-              const quotes = await getQuotes();
-              const randomQuote = getRandomQuote(quotes);
-              setQuote(randomQuote.quote);
-              setAuthor(randomQuote.author);
-            }}
-          >
+          <button className={styles.button} onClick={fetchQuotes}>
             Change Quote
           </button>
         </main>
