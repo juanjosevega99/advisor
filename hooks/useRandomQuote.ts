@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect } from "react";
 import { getQuotes } from "../firebase/client";
 import { Quote } from "../shared/quotesInterface";
 
@@ -10,21 +10,16 @@ function getRandomQuote(quotes: Quote[]) {
 
 export function useRandomQuote() {
   const [quote, setQuote] = useState<Quote>();
-  const isInitialRender = useRef(true);
 
-  const fetchQuotes = useCallback(async () => {
+  const fetchQuotes = async () => {
     const quotesFirebase = await getQuotes();
     const randomQuote = getRandomQuote(quotesFirebase);
     setQuote(randomQuote);
-  }, []);
+  };
 
   useEffect(() => {
-    if (isInitialRender.current) {
-      isInitialRender.current = false;
-    } else {
-      fetchQuotes();
-    }
-  }, [fetchQuotes]);
+    fetchQuotes();
+  }, []);
 
   return { fetchQuotes, quote: quote?.quote, author: quote?.author };
 }
