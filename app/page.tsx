@@ -1,10 +1,10 @@
 "use client";
 
 import styles from "./styles.module.css";
-import { useQuotes } from "../hooks/useQuotes";
+import { useRandomQuote } from "../hooks/useRandomQuote";
 
 export default function Home() {
-  const { quote, author, fetchQuotes } = useQuotes();
+  const { quote, author, fetchQuotes } = useRandomQuote();
 
   return (
     <>
