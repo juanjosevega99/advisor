@@ -9,15 +9,13 @@ function getRandomQuote(quotes: Quote[]) {
 }
 
 export function useQuotes() {
-  const [quote, setQuote] = useState("");
-  const [author, setAuthor] = useState("");
+  const [quote, setQuote] = useState<Quote>();
   const isInitialRender = useRef(true);
 
   const fetchQuotes = useCallback(async () => {
-    const quotes = await getQuotes();
-    const randomQuote = getRandomQuote(quotes);
-    setQuote(randomQuote.quote);
-    setAuthor(randomQuote.author);
+    const quotesFirebase = await getQuotes();
+    const randomQuote = getRandomQuote(quotesFirebase);
+    setQuote(randomQuote);
   }, []);
 
   useEffect(() => {
@@ -28,5 +26,5 @@ export function useQuotes() {
     }
   }, [fetchQuotes]);
 
-  return { fetchQuotes, quote, author };
+  return { fetchQuotes, quote: quote?.quote, author: quote?.author };
 }
