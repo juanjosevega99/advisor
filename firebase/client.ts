@@ -5,7 +5,7 @@ import {
   getDocs,
   addDoc,
 } from "firebase/firestore/lite";
-import { newQuote, Quote } from "../shared/quotesInterface";
+import { newQuote } from "../shared/quotesInterface";
 
 const firebaseConfig =
   process.env.NEXT_PUBLIC_FIREBASE_CONFIG &&
@@ -13,13 +13,6 @@ const firebaseConfig =
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-// export async function getQuotes() {
-//   const quotesCol = collection(db, "quotes");
-//   const snapshot = await getDocs(quotesCol);
-//   const quotes = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-//   return quotes;
-// }
 
 export async function getQuotes() {
   const quotesCol = collection(db, "quotes");

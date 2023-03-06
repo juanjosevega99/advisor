@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-// import { Quote } from "../../shared/quotesInterface";
 import { addQuote } from "../../firebase/client";
 import styles from "./styles.module.css";
 
