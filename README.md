@@ -26,11 +26,11 @@ pnpm test
 
 ## Routes
 
-`/api/auth`
+`/`
 
 This route is to see the quote of the day.
 
-`/api/favorites`
+`/quotes`
 
 This route is to see all the quotes in firebase.
 
