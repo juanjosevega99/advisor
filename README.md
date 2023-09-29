@@ -32,5 +32,4 @@ This route is to see the quote of the day.
 
 `/quotes`
 
-This route is to see all the quotes in firebase.
-
+This route is to see all the quotes in the app at the moment.
