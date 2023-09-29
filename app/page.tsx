@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import styles from "./styles.module.css";
-import { useRandomQuote } from "../hooks/useRandomQuote";
+import Link from 'next/link';
+import styles from './styles.module.css';
+import { useRandomQuote } from '../hooks/useRandomQuote';
 
 export default function Home() {
   const { quote, author, fetchQuotes } = useRandomQuote();
@@ -17,6 +18,9 @@ export default function Home() {
           </button>
         </main>
       )}
+      <Link href='/quotes' className={styles.bottomRightLink}>
+        Go to Quotes
+      </Link>
     </>
   );
 }
