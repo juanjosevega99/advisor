@@ -1,5 +1,5 @@
 // import quotesData from '' assert { type: 'json' };
-import { franc } from 'franc';
+// import { franc } from 'franc';
 
 const quotesData = {
   Quotes: [
@@ -18,7 +18,8 @@ interface Quote {
 }
 
 function detectLanguage(text: string): string {
-  const langCode: string = franc(text);
+  // const langCode: string = franc(text);
+  const langCode: string = 'en';
   switch (langCode) {
     case 'eng':
       return 'en';
