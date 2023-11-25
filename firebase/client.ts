@@ -1,11 +1,13 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import {
   getFirestore,
   collection,
   getDocs,
   addDoc,
-} from "firebase/firestore/lite";
-import { newQuote } from "../shared/quotesInterface";
+  query,
+  where,
+} from 'firebase/firestore/lite';
+import { newQuote } from '../shared/quotesInterface';
 
 const firebaseConfig =
   process.env.NEXT_PUBLIC_FIREBASE_CONFIG &&
@@ -14,9 +16,17 @@ const firebaseConfig =
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export async function getQuotes() {
-  const quotesCol = collection(db, "quotes");
-  const snapshot = await getDocs(quotesCol);
+export async function getQuotes(language = '') {
+  const quotesCol = collection(db, 'quotes');
+
+  let q;
+  if (language) {
+    q = query(quotesCol, where('language', '==', language));
+  } else {
+    q = quotesCol;
+  }
+
+  const snapshot = await getDocs(q);
   const quotes = snapshot.docs.map((doc) => {
     const data = doc.data();
     return {
@@ -29,6 +39,6 @@ export async function getQuotes() {
 }
 
 export async function addQuote(newQuote: newQuote) {
-  const quotesCol = collection(db, "quotes");
+  const quotesCol = collection(db, 'quotes');
   await addDoc(quotesCol, newQuote);
 }
