@@ -30,7 +30,7 @@ function detectLanguage(text: string): string {
   }
 }
 
-export function processQuotes(quotesArray: Quote[]): void {
+function processQuotes(quotesArray: Quote[]): void {
   quotesArray.forEach(async (quote: Quote) => {
     const language: string = detectLanguage(quote.quote);
     console.log(`Quote ID ${quote.id} is in language: ${language}`);
@@ -44,3 +44,5 @@ export function processQuotes(quotesArray: Quote[]): void {
 
 // const { Quotes } = quotesData;
 // processQuotes(Quotes);
+
+export {}
