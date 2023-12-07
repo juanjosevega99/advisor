@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { addQuote } from '../../firebase/client';
 import styles from './styles.module.css';
 import Notification from '../Notification';
+import { CreateQuoteProps } from '../../shared/quotesInterface';
 
-export function CreateQuote() {
+export function CreateQuote({ addNewQuote }: CreateQuoteProps) {
   const [quote, setQuote] = useState('');
   const [author, setAuthor] = useState('');
   const [message, setMessage] = useState('');
@@ -28,11 +29,11 @@ export function CreateQuote() {
     const response = await addQuote(newQuote);
 
     if (response.success) {
+      addNewQuote(newQuote);
       setMessage(response.message);
       setMessageType('success');
       setQuote('');
       setAuthor('');
-      window.location.reload();
     } else {
       setMessage(response.message);
       setMessageType('error');

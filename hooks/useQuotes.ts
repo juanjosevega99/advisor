@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { getQuotes } from "../firebase/client";
-import { Quote } from "../shared/quotesInterface";
+import { useState, useEffect } from 'react';
+import { getQuotes } from '../firebase/client';
+import { Quote, newQuote } from '../shared/quotesInterface';
 
 export function useQuotes() {
   const [quotes, setQuotes] = useState<Quote[]>([]);
@@ -13,5 +13,11 @@ export function useQuotes() {
     fetchQuotes();
   }, []);
 
-  return { quotes };
+  const addNewQuote = (newQuote: newQuote) => {
+    const tempId = `temp-${new Date().getTime()}`;
+    const quoteWithId = { ...newQuote, id: tempId };
+    setQuotes((currentQuotes) => [...currentQuotes, quoteWithId]);
+  };
+
+  return { quotes, addNewQuote };
 }
