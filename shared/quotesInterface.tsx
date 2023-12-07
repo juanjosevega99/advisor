@@ -8,3 +8,15 @@ export interface newQuote {
   quote: string;
   author: string;
 }
+
+interface AddNewQuoteFunction {
+  (newQuote: newQuote): void;
+}
+
+export interface CreateQuoteProps {
+  addNewQuote: AddNewQuoteFunction;
+}
+
+export interface QuoteLayoutProps {
+  quotes: Quote[];
+}
