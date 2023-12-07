@@ -40,5 +40,14 @@ export async function getQuotes(language = '') {
 
 export async function addQuote(newQuote: newQuote) {
   const quotesCol = collection(db, 'quotes');
-  await addDoc(quotesCol, newQuote);
+
+  const q = query(quotesCol, where('quote', '==', newQuote.quote));
+  const querySnapshot = await getDocs(q);
+
+  if (querySnapshot.empty) {
+    await addDoc(quotesCol, newQuote);
+    return { success: true, message: 'Quote added successfully' };
+  } else {
+    return { success: false, message: 'Quote already exists' };
+  }
 }
