@@ -1,11 +1,9 @@
-"use client";
+'use client';
 
-import styles from "./styles.module.css";
-import { useQuotes } from "../../hooks/useQuotes";
+import styles from './styles.module.css';
+import { QuoteLayoutProps } from '../../shared/quotesInterface';
 
-export function QuoteLayout() {
-  const { quotes } = useQuotes();
-
+export function QuoteLayout({ quotes }: QuoteLayoutProps) {
   return (
     <div className={styles.container}>
       {quotes.map((quote) => (
