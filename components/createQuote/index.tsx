@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { addQuote } from '../../firebase/client';
 import styles from './styles.module.css';
 import Notification from '../Notification';
@@ -39,6 +39,17 @@ export function CreateQuote({ addNewQuote }: CreateQuoteProps) {
       setMessageType('error');
     }
   };
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    if (messageType) {
+      timer = setTimeout(() => {
+        setMessageType(null);
+        setMessage('');
+      }, 5000);
+    }
+    return () => clearTimeout(timer);
+  }, [messageType]);
 
   return (
     <div>
