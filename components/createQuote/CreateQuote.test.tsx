@@ -1,5 +1,5 @@
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import { CreateQuote } from '.';
+import { CreateQuote } from './index';
 
 jest.mock('../../firebase/client', () => ({
   addQuote: jest.fn(),
