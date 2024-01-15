@@ -1,7 +1,7 @@
 'use client';
 
 import { QuoteLayout } from '../../components/Quote';
-import { CreateQuote } from '../../components/createQuote';
+import { CreateQuote } from '../../components/CreateQuote/CreateQuote';
 import { useQuotes } from '../../hooks/useQuotes';
 
 export default function QuotesAdmin() {
