@@ -12,7 +12,7 @@ const Notification: React.FC<NotificationProps> = ({ message, type }) => {
     type === 'error' ? styles.notificationError : styles.notificationSuccess;
 
   return (
-    <div className={`${styles.notification} ${notificationStyle}`}>
+    <div className={`${styles.notification} ${notificationStyle}`} data-testid="notification">
       {message}
     </div>
   );
