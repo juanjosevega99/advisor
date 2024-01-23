@@ -1,0 +1,29 @@
+name: Release Workflow
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build
+
+    # TODO:
+    # - name: Generate Changelog
+    #   run: npx auto-changelog -p
+
+    - name: Semantic Release
+      run: npx semantic-release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
