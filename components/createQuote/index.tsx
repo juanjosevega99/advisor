@@ -66,7 +66,7 @@ export function CreateQuote({ addNewQuote }: CreateQuoteProps) {
         <input
           className={styles.inputAuthor}
           type='text'
-          placeholder='author here'
+          placeholder='Author here'
           onChange={(e) => setAuthor(e.target.value)}
           value={author}
         />
