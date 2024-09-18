@@ -11,7 +11,7 @@ describe('CreateQuote Component', () => {
     expect(
       screen.getByPlaceholderText('Add your quote here')
     ).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('author here')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Author here')).toBeInTheDocument();
     expect(screen.getByText('save')).toBeInTheDocument();
   });
 
@@ -29,7 +29,7 @@ describe('CreateQuote Component', () => {
     render(<CreateQuote addNewQuote={() => {}} />);
 
     const quoteInput = screen.getByPlaceholderText('Add your quote here') as HTMLInputElement;
-    const authorInput = screen.getByPlaceholderText('author here') as HTMLInputElement;
+    const authorInput = screen.getByPlaceholderText('Author here') as HTMLInputElement;
 
     fireEvent.change(quoteInput, { target: { value: 'Test Quote' } });
     fireEvent.change(authorInput, { target: { value: 'Test Author' } });
