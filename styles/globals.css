@@ -1,13 +1,14 @@
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-ser;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   padding: 0;
   margin: 0;
-  background: linear-gradient(#851835, #000000, #000000, #000000);
+  /* background: linear-gradient(135deg, #b02e58, #851835 30%, #3e003e 70%, #000000); */
+  background: linear-gradient(135deg, #cb4670, #440c44 30%, #000000 70%, #000000);
+  /* background: linear-gradient(135deg, #cb4670, #8a2540 30%, #440c44 70%, #000000); */
   color: white;
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  /* line-height: 1.5; */
 }
