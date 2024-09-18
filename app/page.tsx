@@ -10,13 +10,13 @@ export default function Home() {
   const { quote, author, fetchQuotes } = useRandomQuote();
 
   const handleQuoteChangeClick = async () => {
-    await fetchQuotes(language); // Fetch quotes based on current language state
+    await fetchQuotes(language);
   };
 
   const handleUseMyLanguageClick = () => {
-    const userLanguage = navigator.language.split('-')[0]; // 'en-US' becomes 'en'
-    setLanguage(userLanguage); // Update language state
-    fetchQuotes(userLanguage); // Fetch quotes in user's language
+    const userLanguage = navigator.language.split('-')[0];
+    setLanguage(userLanguage);
+    fetchQuotes(userLanguage);
   };
 
   return (
@@ -26,7 +26,6 @@ export default function Home() {
           <h1 className={styles.title}>{quote}</h1>
           <p className={styles.p}>{author}</p>
           <button className={styles.button} onClick={handleQuoteChangeClick}>
-            {/* <button className={styles.button} onClick={fetchQuotes}> */}
             Change Quote
           </button>
         </main>
