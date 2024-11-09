@@ -7,6 +7,7 @@ export interface Quote {
 export interface newQuote {
   quote: string;
   author: string;
+  dateAdded: string;
 }
 
 interface AddNewQuoteFunction {

@@ -18,6 +18,7 @@ export function CreateQuote({ addNewQuote }: CreateQuoteProps) {
     const newQuote = {
       quote: quote.trim(),
       author: author.trim(),
+      dateAdded: new Date().toISOString(),
     };
 
     if (!newQuote.quote || !newQuote.author) {
