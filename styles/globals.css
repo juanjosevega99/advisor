@@ -5,10 +5,29 @@ body {
   padding: 0;
   margin: 0;
   /* background: linear-gradient(135deg, #b02e58, #851835 30%, #3e003e 70%, #000000); */
-  background: linear-gradient(135deg, #cb4670, #440c44 30%, #000000 70%, #000000);
-  /* background: linear-gradient(135deg, #cb4670, #8a2540 30%, #440c44 70%, #000000); */
+  /* background: linear-gradient(135deg, #cb4670, #440c44 30%, #000000 70%, #000000); */
+  /* Enhanced gradient with better color transitions */
+  background: linear-gradient(135deg, #d64b7e, #a12c50 20%, #701a5e 50%, #340a3f 80%, #100118);
   color: white;
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add custom fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* Fix iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Improve tap target sizes on mobile */
+button, a {
+  min-height: 44px;
+  min-width: 44px;
 }
